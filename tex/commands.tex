@@ -1,0 +1,367 @@
+% -----------------------------------------------------------------------------
+% Pacotes fundamentais
+% -----------------------------------------------------------------------------
+\usepackage{xcolor}
+\newcommand\myworries[1]{\textcolor{red}{[#1]}}
+% Escolhendo a fonte
+% Consultar: http://www.tug.dk/FontCatalogue/
+%\usepackage{lmodern}       % Usa a fonte Latin Modern (Serifada, tipo Times New Roman
+\usepackage{fourier}        % Usa a fonte Utopia Regular with Fourier
+\usepackage[T1]{fontenc}    % ^^^^
+
+%\usepackage{helvet}		% Usa a fonte Helvetica (Tipo Arial)	
+%\renewcommand{\familydefault}{\sfdefault} tira o serifado
+\usepackage[T1]{fontenc}		% Selecao de codigos de fonte.
+\usepackage[utf8]{inputenc}		% Codificacao do documento (conversão automática dos acentos)
+\usepackage{indentfirst}		% Indenta o primeiro parágrafo de cada seção.
+\usepackage{color}				% Controle das cores
+\usepackage{tikz}				% Inclusão de gráficos
+\usepackage{graphicx}			% Inclusão de gráficos
+\usepackage{microtype} 			% para melhorias de justificação
+% -----------------------------------------------------------------------------
+% Pacotes adicionais, usados no anexo do modelo de folha de identificação
+% -----------------------------------------------------------------------------
+\usepackage{multicol}
+\usepackage{multirow}
+% -----------------------------------------------------------------------------
+% Pacotes adicionais, usados apenas no âmbito do Modelo Canônico do abnteX2
+% -----------------------------------------------------------------------------
+\usepackage{lipsum}				% para geração de dummy text % http://ctan.org/pkg/lipsum
+% -----------------------------------------------------------------------------
+% Pacotes de citações
+% -----------------------------------------------------------------------------
+\usepackage[brazilian,hyperpageref]{backref}	 % Paginas com as citações na bibliografia
+\usepackage[alf,abnt-etal-list=3,abnt-etal-cite=3, abnt-emphasize=bf,num]{abntex2cite}	% Citações padrão ABNT
+\usepackage{pdflscape}
+\usepackage{footnote}
+\usepackage{pdfpages}
+\usepackage{caption}
+
+% -----------------------------------------------------------------------------
+% Pacotes adicionados por @leolleocomp
+% ----------------------------------------------------------------------------- 
+\usepackage{booktabs}
+\usepackage{adjustbox}
+\usepackage{subcaption}
+\usepackage[labelfont=bf]{caption}
+\usepackage{gensymb}
+\usepackage{amsmath}
+\usepackage{array}
+\usepackage{float}
+\usepackage{xcolor,colortbl}
+\usepackage{longtable}
+\usepackage{scalefnt}
+\usepackage{listings}			% inserir codigo fonte
+
+
+% -----------------------------------------------------------------------------
+% Pacotes adicionados por @Gabrielr2508
+% ----------------------------------------------------------------------------- 
+\usepackage{hyperref}
+\PassOptionsToPackage{hyphens}{url}\usepackage{hyperref}
+
+\usepackage{tocloft}
+% -- permite a adição de células especiais em tabelas
+\newcommand{\specialcell}[2][c]{%
+  \begin{tabular}[#1]{@{}c@{}}#2\end{tabular}}
+
+\newcounter{equationset}
+\newcommand{\equationset}[1]{% \equationset{<caption>}
+  \refstepcounter{equationset}% Step counter
+  \noindent\makebox[\linewidth]{Equação ~\theequationset: #1}
+ }
+
+%--------------------------------------------------------------------------------
+% Adequação dos títulos dos capitulos, seções, subseções às normas da Univasf
+% Added by @Gabrielr2508
+%--------------------------------------------------------------------------------
+\renewcommand{\ABNTEXchapterfont}{\fontseries{b}}
+\renewcommand{\ABNTEXchapterfontsize}{\normalsize}
+
+\renewcommand{\ABNTEXsectionfont}{\fontseries{m}}
+\renewcommand{\ABNTEXsectionfontsize}{\normalsize}
+
+\renewcommand{\ABNTEXsubsectionfont}{\fontseries{b}}
+\renewcommand{\ABNTEXsubsectionfontsize}{\normalsize}
+
+\renewcommand{\ABNTEXsubsubsectionfont}{\fontseries{m}}
+\renewcommand{\ABNTEXsubsubsectionfontsize}{\normalsize}
+
+%--------------------------------------------------------------------------------
+% CONFIGURAÇÕES DE PACOTES
+% Configurações do pacote backref
+%--------------------------------------------------------------------------------
+% Usado sem a opção hyperpageref de backref
+% \renewcommand{\backrefpagesname}{Citado na(s) página(s):~}
+% Texto padrão antes do número das páginas
+\renewcommand{\backref}{}
+% Define os textos da citação
+% \renewcommand*{\backrefalt}[4]{
+% 	\ifcase #1 %
+% 		%Nenhuma citação no texto.%
+% 	\or
+% 		Citado na página #2.%
+% 	\else
+% 		Citado #1 vezes nas páginas #2.%
+% 	\fi}%
+
+%--------------------------------------------------------------------------------
+% Configurações de aparência do PDF final
+%--------------------------------------------------------------------------------
+% alterando o aspecto da cor azul
+\definecolor{blue}{RGB}{41,5,195}
+
+% informações do PDF
+\makeatletter
+\hypersetup{
+     	%pagebackref=true,
+		pdftitle={\@title},
+		pdfauthor={\@author},
+    	pdfsubject={\imprimirpreambulo},
+	    pdfcreator={LaTeX with abnTeX2},
+		pdfkeywords={abnt}{latex}{abntex}{abntex2}{relatório técnico},
+		colorlinks=true,			% false: boxed links; true: colored links
+    	linkcolor=black,				% color of internal links
+    	citecolor=black,				% color of links to bibliography
+    	filecolor=black,			% color of file links
+		urlcolor=black,
+		bookmarksdepth=4
+}
+\makeatother
+% ---
+
+% ---
+% Espaçamentos entre linhas e parágrafos
+% ---
+
+% O tamanho do parágrafo é dado por:
+\setlength{\parindent}{1.3cm}
+
+% Controle do espaçamento entre um parágrafo e outro:
+\setlength{\parskip}{0.2cm}  % tente também \onelineskip
+
+%--------------------------------------------------------------------------------
+% compila o indice
+%--------------------------------------------------------------------------------
+\makeindex
+% ---
+
+%--------------------------------------------------------------------------------
+% Comando para inserir imagens de forma simples
+%--------------------------------------------------------------------------------
+\newcommand{\imagem}[4]
+{%			\imagem{x.x}{nomeimg}{titulo}{fonte}
+	\begin{figure}[!htb]
+		\caption{\label{img:#2}#3}
+		\begin{center}
+			\includegraphics[scale=#1]{img/#2}
+		\end{center}
+        \legend{\textbf{Fonte:} #4}
+	\end{figure}
+}%
+
+%--------------------------------------------------------------------------------
+% Creio que esses comandos sejam para desenhar algo, aguardando explicações de @leolleocomp
+%--------------------------------------------------------------------------------
+\newcommand{\xx} {$\bigotimes$}
+\newcommand{\oo} {$\bigcirc$}
+
+%--------------------------------------------------------------------------------
+% Biblioteca para códigos-fonte
+%--------------------------------------------------------------------------------
+\usepackage[newfloat=true]{minted}
+
+%--------------------------------------------------------------------------------
+% Caixas batutas - by @leolleocomp
+%--------------------------------------------------------------------------------
+\usepackage[most]{tcolorbox}
+\tcbuselibrary{breakable}
+
+\tcbuselibrary{minted}
+\tcbset{listing engine=minted}
+
+\definecolor{bg}{rgb}{0.95,0.95,0.95}
+
+\SetupFloatingEnvironment{listing}{name=Código, listname=Lista de códigos}
+
+%--------------------------------------------------------------------------------
+% configuração do contador dos códigos-fonte - by @leolleocomp
+% assim como as figuras, começa em 1
+\newcounter{sourcecode}
+%--------------------------------------------------------------------------------
+%--------------------------------------------------------------------------------
+% @leolleocomp
+% stackoverflow code
+% peguei da resposta abaixo
+% https://stackoverflow.com/questions/24086366/change-latex-minted-listings-numbering-to-include-current-section?answertab=votes#tab-top
+%--------------------------------------------------------------------------------
+\makeatletter
+\renewcommand*{\thelisting}{\thesourcecode}
+\makeatother
+
+%--------------------------------------------------------------------------------
+% Peçam explicações a @leolleo
+% WHO DID THIS?
+%--------------------------------------------------------------------------------
+\newcommand{\Ididthis}{
+%	\legend{\textbf{Fonte:} O autor (\the\year).}
+\legend{\textbf{Fonte:} O autor}
+}
+
+\newcommand{\Otherguydidthis}[1]{
+	\legend{\textbf{Fonte:} \citeonline{#1}.}
+}
+
+%--------------------------------------------------------------------------------
+% Comando para inserir códigos - by @leolleocomp
+%--------------------------------------------------------------------------------
+\newcommand{\sourcecode}[4]{
+\begin{listing}[H]
+	\refstepcounter{sourcecode}
+	\caption{#1}
+	\label{cmd:#2}
+	\inputminted[linenos, bgcolor=bg, tabsize=4,breaklines]{#3}{codes/#4}
+	\Ididthis
+\end{listing}
+}
+
+
+% -----------------------------------------------------------------------------
+% Pacotes adicionados por @ruanmed
+% ----------------------------------------------------------------------------- 
+\usepackage[binary-units=true]{siunitx}
+
+
+%--------------------------------------------------------------------------------
+% Comando para inserir códigos - by @ruanmed
+%--------------------------------------------------------------------------------
+\usepackage{caption}
+
+\newenvironment{code}{\captionsetup{type=listing}}{}
+\SetupFloatingEnvironment{listing}{name=Código}
+
+\newcommand{\sourcecodenolist}[4]{
+	\begin{code}
+	    \refstepcounter{sourcecode}
+        \captionof{listing}{#1 }
+        \label{code:#2}
+        \inputminted[linenos, bgcolor=bg, tabsize=4,breaklines]{#3}{codes/#4}
+        \Wedidthis
+    \end{code}
+}
+
+% \newcommand{\sourcecodenolist}[4]{
+% 	\refstepcounter{sourcecode}
+% 	\captionof{listing}{#1 \label{cmd:#2}}
+% 	\inputminted[linenos, bgcolor=bg, tabsize=4,breaklines]{#3}{codes/#4}
+% 	\Wedidthis
+% }
+
+% \newcommand{\sourcecodenolist}[4]{
+% 	\refstepcounter{sourcecode}
+% 	\captionof{listing}{#1 \label{cmd:#2}}
+% 	\inputminted[linenos, bgcolor=bg, tabsize=4,breaklines]{#3}{codes/#4}
+% 	\Wedidthis
+% }
+
+
+\newcommand{\sourcecodeinline}[2]{
+	\mintinline[linenos, bgcolor=bg, tabsize=4,breaklines]{#1}{#2}
+}
+
+%--------------------------------------------------------------------------------
+% Outros pacotes adicionais para circuitos - by @ruanmed
+%--------------------------------------------------------------------------------
+\RequirePackage{tikz}
+\usepackage{tikz}
+\usepackage[siunitx]{circuitikz}			% para habilitar o desenho de circuitos
+\usetikzlibrary{babel}
+% ---
+
+
+%--------------------------------------------------------------------------------
+% Outros pacotes adicionais para Siglas - by @ruanmed
+%--------------------------------------------------------------------------------
+\usepackage{nomencl}
+\makenomenclature
+
+%--------------------------------------------------------------------------------
+% Outros pacotes adicionais para Caixas de TExto - by @ruanmed
+% https://tex.stackexchange.com/questions/13506/how-to-continue-the-framed-text-box-on-multiple-pages
+% https://tex.stackexchange.com/questions/34088/how-to-draw-frame-with-rounded-corners-around-box
+% https://tex.stackexchange.com/questions/26002/fit-text-into-given-box-by-adjusting-the-fontsize
+%--------------------------------------------------------------------------------
+
+\usepackage[most]{tcolorbox}
+
+\usepackage[framemethod=TikZ]{mdframed}
+
+\usepackage{environ}% http://ctan.org/pkg/environ
+\newdimen\fontdim
+\newdimen\upperfontdim
+\newdimen\lowerfontdim
+\newif\ifmoreiterations
+\fontdim12pt
+
+\makeatletter
+\NewEnviron{fitbox}[2]{% \begin{fitbox}{<width>}{<height>} stuff \end{fitbox}
+  \def\buildbox{%
+    \setbox0\vbox{\hbox{\minipage{#1}%
+      \fontsize{\fontdim}{1.2\fontdim}%
+      \selectfont%
+      \stuff%
+    \endminipage}}%
+    \dimen@\ht0
+    \advance\dimen@\dp0
+  }
+  \def\stuff{\BODY}% Store environment body
+  \buildbox
+  % Compute upper and lower bounds
+  \ifdim\dimen@>#2
+    \loop
+      \fontdim.5\fontdim % Reduce font size by half
+      \buildbox
+    \ifdim\dimen@>#2 \repeat
+    \lowerfontdim\fontdim
+    \upperfontdim2\fontdim
+    \fontdim1.5\fontdim
+  \else
+    \loop
+      \fontdim2\fontdim % Double font size
+      \buildbox
+    \ifdim\dimen@<#2 \repeat
+    \upperfontdim\fontdim
+    \lowerfontdim.5\fontdim
+    \fontdim.75\fontdim
+  \fi
+  % Now try to find the optimum size
+  \loop
+    %\message{Bounds: \the\lowerfontdim\space
+    %         \the\fontdim\space \the\upperfontdim^^J}
+    \buildbox
+    \ifdim\dimen@>#2
+      \moreiterationstrue
+      \upperfontdim\fontdim
+      \advance\fontdim\lowerfontdim
+      \fontdim.5\fontdim
+    \else
+      \advance\dimen@-#2
+      \ifdim\dimen@<10pt
+        \lowerfontdim\fontdim
+        \advance\fontdim\upperfontdim
+        \fontdim.5\fontdim
+        \dimen@\upperfontdim
+        \advance\dimen@-\lowerfontdim
+        \ifdim\dimen@<.2pt
+          \moreiterationsfalse
+        \else
+          \moreiterationstrue
+        \fi
+      \else
+        \moreiterationsfalse
+      \fi
+    \fi
+  \ifmoreiterations \repeat
+  \box0% Typeset content
+}
+\makeatother
