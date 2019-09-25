@@ -10,6 +10,9 @@
 	%subsubsection=TITLE,% títulos de subsubseções convertidos em letras maiúsculas
 	english,			% idioma adicional para hifenização
 	brazil,				% o último idioma é o principal do documento
+	inline,             % adicionado para o enumitem
+	shortlabels,        % adicionado para o enumitem
+	hyphens             % adicionando quebras de linhas para links
 	]{abntex2}
 
 % ---------------------------------------------------------------------------
@@ -20,7 +23,7 @@
 % ---------------------------------------------------------------------------
 % IDENTIFICAÇÃO
 % ---------------------------------------------------------------------------
-\titulo{Análise do impacto de variáveis de Recuperação de Informação no desempenho de classificadores de Mineração de Textos}
+\titulo{Estudo investigativo sobre o desempenho de atributos de Recuperação de Informação em tarefas de Mineração de Textos}
 \autor{Ruan de Medeiros Bahia}
 \local{Juazeiro - BA}
 \orientador{Prof. Dr. Rosalvo Ferreira de Oliveira Neto}
@@ -29,7 +32,7 @@
 FUNDAÇÃO UNIVERSIDADE FEDERAL DO VALE DO SÃO FRANCISCO
 	\\
 COLEGIADO DE ENGENHARIA DE COMPUTAÇÃO}
-\tipotrabalho{Formulário de matrícula de TCC I}
+\tipotrabalho{Formulário de matrícula de TCC II}
 \preambulo{Trabalho apresentado à Universidade Federal do Vale do São Francisco - Univasf, Campus Juazeiro, como requisito da obtenção do título de Bacharel em Engenharia de Computação.}
 
 
@@ -55,111 +58,124 @@ COLEGIADO DE ENGENHARIA DE COMPUTAÇÃO}
 \renewcommand{\cftparagraphfont}{\normalfont\itshape}
 
 % -----------------------------------------------------------------------------
-% Início do TCC 
+% Início do Formulário 
 % -----------------------------------------------------------------------------
 \begin{document}
-\selectlanguage{brazil}
+    \selectlanguage{brazil}
 	\frenchspacing % Retira espaço extra obsoleto entre as frases.
-	
+    
     \setlength{\belowcaptionskip}{0pt}
     \setlength{\abovecaptionskip}{0pt}
     \setlength{\intextsep}{-18pt}
-        \begin{figure}[h]
-    		\begin{center}
-    		   \includegraphics[scale=0.8]{img/brasao_brasil_m.png}
-    		\end{center}
-    	\end{figure}
-        \center
-        %\textscale{0.9} 
-    	{\textbf{\ABNTEXchapterfont\imprimirinstituicao}}
-    	\\
-        Avenida Antonio Carlos Magalhães, 510 - Santo Antônio CEP: 48902-300 \\
-        Juazeiro/BA, Tel/Fax: (74) 2102-7636 - Juazeiro - BA \\
-        \url{www.univasf.edu.br/~ccomp}
-        
-    	\begin{mdframed}[roundcorner=10pt]
-    	    \begin{minipage}[t][3\height][c]{\dimexpr\textwidth-1\fboxsep-2\fboxrule\relax}
-                \centering
-                \ABNTEXchapterfont\large\imprimirtipotrabalho
-            \end{minipage}
-        \end{mdframed}
-        
-        
-        \newmdenv[%
-            roundcorner=5pt,
-            subtitlebelowline=true,subtitleaboveline=true,
-            subtitlebackgroundcolor=yellow!70!white, %             backgroundcolor=blue!20!white,
-            frametitle={Título do projeto de pesquisa},
-            frametitlerule=true, 
-            frametitlebackgroundcolor=yellow!70!white,
-            subtitlebelowskip=0.1\baselineskip,
-            subtitleaboveskip=0.5\baselineskip,
-            subtitleinneraboveskip=5pt,
-            subtitleinnerbelowskip=5pt,
-            ]{subtitleenv}
-        \begin{subtitleenv}
-            \imprimirtitulo
 
-            \mdfsubtitle{Nome do discente}
-            {\small
-            \imprimirautor
-            }
-            \mdfsubtitle{Nome do orientador e co-orientador}
-            {\small
-            \imprimirorientador
-            }
-            \mdfsubtitle{Resumo e palavras-chave}
-            {\small
-            \input{tex/form/resumo.tex}
-            }
-            \mdfsubtitle{Qualificação do problema a ser abordado}
-            {\small
-            \input{tex/form/qualificacao.tex}
-            }
-            \mdfsubtitle{Justificativa}
-            {\small
-            \input{tex/form/justificativa.tex}
-            }
-            \mdfsubtitle{Objetivo a ser alcançado}
-            {\small
-            \input{tex/form/objetivo.tex}
-            }
-            \mdfsubtitle{Metodologia a ser empregada}
-            {\small
-            \input{tex/form/metodologia.tex}
-            }
-            \mdfsubtitle{Referencial bibliográfico}
-            {\small
-            \input{tex/form/referencias.tex}
-            }
-            \mdfsubtitle{Cronograma de atividades}
-            {\small
-            \input{tex/form/cronograma.tex}
-            }
-            \mdfsubtitle{Necessidades e disponibilidade de recursos e infraestrutura para o desenvolvimento deste projeto}
-            {\small
-            \input{tex/form/necessidades.tex}
-            }
-           
-        \end{subtitleenv}
+    %--------------------------------------------------------------------------------------
+    % Cabeçalho
+    %--------------------------------------------------------------------------------------
+    \begin{figure}[h]
+        \begin{center}
+            \includegraphics[scale=0.8]{img/brasao_brasil_m.png}
+        \end{center}
+    \end{figure}
+    \center
+    %\textscale{0.9} 
+    {\textbf{\ABNTEXchapterfont\imprimirinstituicao}}
+    \\
+    Avenida Antonio Carlos Magalhães, 510 - Santo Antônio CEP: 48902-300 \\
+    Juazeiro/BA, Tel/Fax: (74) 2102-7636 - Juazeiro - BA \\
+    \url{www.univasf.edu.br/~ccomp}
+    
+    \begin{mdframed}[roundcorner=10pt]
+        \begin{minipage}[t][3\height][c]{\dimexpr\textwidth-1\fboxsep-2\fboxrule\relax}
+            \centering
+            \ABNTEXchapterfont\large\imprimirtipotrabalho
+        \end{minipage}
+    \end{mdframed}
+    
+    
+    \newmdenv[%
+        roundcorner=5pt,
+        subtitlebelowline=true,subtitleaboveline=true,
+        subtitlebackgroundcolor=yellow!70!white, %             backgroundcolor=blue!20!white,
+        frametitle={Título do projeto de pesquisa},
+        frametitlerule=true, 
+        frametitlebackgroundcolor=yellow!70!white,
+        subtitlebelowskip=0.1\baselineskip,
+        subtitleaboveskip=0.5\baselineskip,
+        subtitleinneraboveskip=5pt,
+        subtitleinnerbelowskip=5pt,
+        ]{subtitleenv}
+    \begin{subtitleenv}
+        \imprimirtitulo
+
+        \mdfsubtitle{Nome do discente}
+        {\small
+        \imprimirautor
+        }
+
+        \mdfsubtitle{Nome do orientador e co-orientador}
+        {\small
+        \imprimirorientador
+        }
         
+        \mdfsubtitle{Resumo e palavras-chave}
+        {\small
+        \input{tex/form/resumo.tex}
+        }
+
+        \mdfsubtitle{Qualificação do problema a ser abordado}
+        {\small
+        \input{tex/form/qualificacao.tex}
+        }
+
+        \mdfsubtitle{Justificativa}
+        {\small
+        \input{tex/form/justificativa.tex}
+        }
+
+        \mdfsubtitle{Objetivo a ser alcançado}
+        {\small
+        \input{tex/form/objetivo.tex}
+        }
+
+        \mdfsubtitle{Metodologia a ser empregada}
+        {\small
+        \input{tex/form/metodologia.tex}
+        }
+
+        \mdfsubtitle{Referencial bibliográfico}
+        {\small
+        \input{tex/form/referencias.tex}
+        }
+
+        \mdfsubtitle{Cronograma de atividades}
+        {\small
+        \input{tex/form/cronograma.tex}
+        }
+
+        \mdfsubtitle{Necessidades e disponibilidade de recursos e infraestrutura para o desenvolvimento deste projeto}
+        {\small
+        \input{tex/form/necessidades.tex}
+        }
         
-        \vspace*{1cm}
-        \hrulefill \\
-        \imprimirorientador \\
-        Orientador(a) \\
-        
-        % \vspace*{1cm}
-        % \hrulefill \\
-        % NOME DO CO-ORIENTADOR \\
-        % Co-Orientador(a) \\
-        
-        \vspace*{1cm}
-        \hrulefill \\
-        \imprimirautor \\
-        Aluno(a) \\
-        
-        \vspace*{1cm}
-        \imprimirlocal, 13/05/2019.\\
+    \end{subtitleenv}
+    
+    
+    \vspace*{1cm}
+    \hrulefill \\
+    \imprimirorientador \\
+    Orientador(a) \\
+    
+    % \vspace*{1cm}
+    % \hrulefill \\
+    % \imprimircoorientador \\ NOME DO CO-ORIENTADOR
+    % Co-Orientador(a) \\
+    
+    \vspace*{1cm}
+    \hrulefill \\
+    \imprimirautor \\
+    Aluno(a) \\
+    
+    \vspace*{1cm}
+    \imprimirlocal, 25/09/2019.\\
 
 \end{document}

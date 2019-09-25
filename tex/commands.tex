@@ -285,6 +285,24 @@
 \usepackage{nomencl}
 \makenomenclature
 
+\newlist{inlinelist}{enumerate*}{1}
+\setlist*[inlinelist,1]{%
+  label=(\alph*),
+}
+
+%--------------------------------------------------------------------------------
+% Pacote para tabelas
+%--------------------------------------------------------------------------------
+% Pacote para inserir divisória diagonal em tabela
+\usepackage{diagbox}
+
+% Pacote para auxiliar em tabelas criando novas células
+\usepackage{makecell}
+
+\usepackage{pbox,ragged2e}
+
+\usepackage{graphicx}
+
 %--------------------------------------------------------------------------------
 % Outros pacotes adicionais para Caixas de TExto - by @ruanmed
 % https://tex.stackexchange.com/questions/13506/how-to-continue-the-framed-text-box-on-multiple-pages
