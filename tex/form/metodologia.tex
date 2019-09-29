@@ -1,7 +1,7 @@
 %--------------------------------------------------------------------------------------
 % Metodologia a ser empregada 
 %--------------------------------------------------------------------------------------
-A realização deste trabalho depende do emprego de duas metodologias, uma para o levantamento bibliográfico, que já foi realizada, e outra para atingir os objetivos almejados pelo trabalho, a ser colocada em prática.
+A realização deste trabalho depende do emprego de duas metodologias, uma para o levantamento bibliográfico, etapa qual já foi realizada, e outra para atingir os objetivos almejados pelo trabalho, a ser colocada em prática.
 Ambas as metodologias encontram-se descritas a seguir sob os respectivos nomes de: método de pesquisa bibliográfica e método de pesquisa prática.
 
 \textbf{Método de pesquisa bibliogŕafica}
@@ -110,9 +110,9 @@ Esta metodologia está ilustrada na Figura \ref{fig:diagrama-da-metodologia} e o
     \begin{itemize}
         \item \textbf{TOOL\_ELASTIC}: Elasticsearch 7.2 é o mecanismo distribuído de análise e busca baseado no Apache Lucene\footnote{Biblioteca de software livre e de código aberto para ferramentas de buscas em texto, escrita originalmente em Java \cite{LUCENE_DOCUMENTATION_2019}.}, desenvolvido em Java, e possui código aberto sob diversas licenças sendo a principal a Licença Apache
         \footnote{Licença de software livre permissiva de autoria da Apache Software Foundation (ASF) \cite{NEWMEDIA_OPENGUIDE_2015}.}
-         \cite{ELASTIC_GitHub_2019, ELASTIC_REFERENCE_INTRO_2019}. 
+         \cite{ELASTIC_REFERENCE_INTRO_2019}. 
         
-        O Elasticsearch possui diversas APIs que possibilitam sua integração fácil com variadas linguagens de programação \cite{ELASTIC_GitHub_2019}, e tenta deixar todas suas funcionalidades disponíveis via sua API JSON pois internamente é no formato JSON
+        O Elasticsearch possui diversas APIs que possibilitam sua integração fácil com variadas linguagens de programação, e tenta deixar todas suas funcionalidades disponíveis via sua API JSON pois internamente é no formato JSON
         \footnote{\textit{JavaScript Object Notation}, formato de objeto utilizado pela linguagem de programação JavaScript.}
          que o Elasticsearch guarda os dados. 
         Suporta também requisições GET em tempo real, o que o torna apropriado para armazenamento como um banco de dados NoSQL \cite{PETER_ELASTICDB_2011, VOLKAN_ELASTIC_DATASTORE_2018}.
@@ -120,7 +120,7 @@ Esta metodologia está ilustrada na Figura \ref{fig:diagrama-da-metodologia} e o
         Dentre suas funções de indexação, o Elasticsearch possui um módulo de similaridade (\textit{similarity module}) que é responsável pela implantação de funções para ranqueamento de documentos.
         Este módulo realiza uma implementação da função BM25 como sua função padrão para cálculo de similaridade sobre o nome de \textit{BM25 similarity} \cite{ELASTIC_REFERENCE_SIMILARITY_2019}.
         
-        \item \textbf{TOOL\_ARANGO}: ArangoDB v3.4.6 é um banco de dados multi-modelo nativo, desenvolvido principalmente em C++ com extensões em JavaScript, que possui código-fonte aberto e possibilita modelos de dados flexíveis, tanto para documentos, gráficos, e valores-chave \cite{ARANGODB_DOC_2019, ARANGODB_GitHub_2019}.
+        \item \textbf{TOOL\_ARANGO}: ArangoDB v3.4.6 é um banco de dados multi-modelo nativo, desenvolvido principalmente em C++ com extensões em JavaScript, e possibilita modelos de dados flexíveis, tanto para documentos, gráficos, e valores-chave \cite{ARANGODB_DOC_2019}.
         
         Utiliza da linguagem de consulta AQL (\textit{ArangoDB Query Language}) para recuperar e modificar dados, que, por meio das \textit{views}
         \footnote{``Uma \textit{view} (visão) em terminologia SQL é uma única tabela que é derivada de outras tabelas [$\cdots$]  é considerada uma tabela virtual'' \cite[p.~88]{ElmasriSBD2010}.}
@@ -129,7 +129,7 @@ Esta metodologia está ilustrada na Figura \ref{fig:diagrama-da-metodologia} e o
         .
         Assim, por meio da AQL integrada ao IResearch, o ArangoDB fornece funções de ordenação de documentos mediante uma consulta, e, dentre elas, a função BM25() faz uma implementação do algoritmo da função de ranqueamento BM25 \cite{ARANGODB_SEARCHVIEWS_2019}.
         
-        \item \textbf{TOOL\_ZETTAIR}: Zettair v0.9.3 é um mecanismo de busca de código-fonte aberto escrito na linguagem C, projetado para ser compacto e pesquisar rapidamente em texto, desenvolvido pelo Grupo de Mecanismos de Busca do Instituto Real de Tecnologia de Melbourne em 2009 \cite{ZETTAIR_HOME_2009}.
+        \item \textbf{TOOL\_ZETTAIR}: Zettair v0.9.3 é um mecanismo de busca de código-fonte aberto escrito na linguagem C, desenvolvido pelo Grupo de Mecanismos de Busca do Instituto Real de Tecnologia de Melbourne em 2009 \cite{ZETTAIR_HOME_2009}.
 
         O Zettair permite que coleções no formato HTML ou TREC sejam indexadas para busca, e possui como característica principal a habilidade de lidar com grandes quantidades de texto, ele constrói índices invertidos por meio da análise feita no seu modo de construção de índex \cite{ZETTAIR_INDEX_2009}.
         
@@ -182,28 +182,33 @@ Esta metodologia está ilustrada na Figura \ref{fig:diagrama-da-metodologia} e o
     
     \subsection{Desempenho de classificador}  \label{subsec:Desempenho-de-classificador}
         O ganho de desempenho propiciado pelos atributos de RI criados será mensurado por medidas de desempenho de classificadores da literatura de mineração de dados, as mesmas também utilizadas na Mineração de Texto.
+
+        % \begin{minipage}{.5\textwidth}
+            \begin{equation}
+                \label{eq:medida-acurácia}
+        		acc = 
+        		\frac{\textit{TP} + \textit{TN}}{P + N}
+            \end{equation}
+        % \end{minipage}
+
         Nesse estudo serão computadas as seguintes medidas:
         \begin{itemize}
             \item \textbf{CLF\_ACC}: Acurácia do classificador no conjunto de validação.
             \item \textbf{CLF\_F1}: $F_1$-score do classificador no conjunto de validação.
         \end{itemize}
         A acurácia de um classificador, definida pela Equação \ref{eq:medida-acurácia}, é a razão entre o número de exemplos classificados corretamente, e o número total de exemplos, no caso em questão, a variável \textbf{CLF\_ACC} a ser computada é referente ao conjunto de validação.
-        
-        \noindent\begin{minipage}{.5\textwidth}
+
+        % \noindent\begin{minipage}{.5\textwidth}
             \begin{equation}
                 \label{eq:medida-f-score}
         		F = 
         		\frac{2 \times p \times r}{p + r}
             \end{equation}
-        \end{minipage}
-        \begin{minipage}{.5\textwidth}
-            \begin{equation}
-                \label{eq:medida-acurácia}
-        		acc = 
-        		\frac{\textit{TP} + \textit{TN}}{P + N}
-            \end{equation}
-        \end{minipage}
+        % \end{minipage}
 
         O $F_1$-score é uma medida de classificador que engloba a precisão e revocação (ou sensitividade), e também é uma boa medida da efetividade de classificadores em termos comparação pois engloba mais informação do que a acurácia. 
         É calculado conforme a definição dada pela Equação \ref{eq:medida-f-score}.
+
+        \noindent\begin{minipage}{.5\textwidth}
+        \end{minipage}
         

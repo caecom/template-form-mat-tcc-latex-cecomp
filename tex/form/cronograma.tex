@@ -8,21 +8,42 @@
 
 %\newpage
 %\begin{table}[!thb]
-	%\huge
-    \centering
-    %\caption{\label{tab:cronograma} Cronograma das atividades previstas para o TCC II}
-    \begin{adjustbox}{max width=\textwidth}
-    \begin{tabular}{p{7.5cm}|c|c|c|c|c|c}
+    %\huge
+\begin{center}
+    \captionof{table}{\label{tab:cronograma} Cronograma das atividades previstas para o TCC II}
+    \begin{adjustbox}{max width={\textwidth},keepaspectratio}%
+    \begin{tabular}{@{} p{6.5cm}|c|c|c|c|c|c @{}}
         \toprule
-        \textbf{Atividade}                          & Abr & Mai & Jun & Jul & Ago \\ \hline
-        Revisão bibliográfica                       & X & X & & & \\ \hline
-        Estudo das técnicas e ferramentas de RI     & & X & X & & \\ \hline
-        Estudo das técnicas e ferramentas de MT     & & X & X & & \\ \hline
-        Seleção dos Bancos de Dados                 & & & & X & \\ \hline
-        Escrita do TCC I                            & X & X & X & X & X \\ \hline
-        Defesa do TCC I                             & & & & & X \\
+        \textbf{Atividade}
+        & Set & Out & Nov & Dez & Jan & Fev
+        \\ \hline
+        Definição e obtenção dos corpus para avaliação 
+        & X   &     &     &     &     &          
+        \\ \hline
+        Inspeção e seleção das soluções com código fonte disponível
+        & X   &     &     &     &     &          
+        \\ \hline
+        Instalação e familiarização com as ferramentas de arquivamento e indexação
+        & X   & X   &     &     &     &          
+        \\ \hline
+        Indexação do conjunto de treinamento dos corpus
+        &     & X   & X   &     &     &          
+        \\ \hline
+        Adição dos atributos de RI às soluções selecionadas
+        &     & X   & X   &     &     &    
+        \\ \hline
+        Mineração dos dados por meio da reprodução das soluções selecionadas com/sem adição dos atributos de RI
+        &     &     & X   & X   & X   &  
+        \\ \hline
+        Escrita do TCC II                       
+        & X   & X   & X   & X   & X   &         
+        \\ \hline
+        Defesa do TCC II                        
+        &     &     &     &     & X   &        
+        \\
         \bottomrule
     \end{tabular}
     \end{adjustbox}
-    %\legend{\textbf{Fonte:} O autor.}
+    \legend{\ABNTEXfontereduzida \textbf{Fonte:} O autor.}
+\end{center}
 %\end{table}
